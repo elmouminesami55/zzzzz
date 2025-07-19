@@ -7,15 +7,20 @@ jobs:
   build:
     name: Start Building
     runs-on: windows-latest
+    timeout-minutes: 360
 
     steps:
-      - name: Downloading & Installing Essentials
+      - name: Download and install essentials
         run: |
-          Invoke-WebRequest -Uri "https://github.com/Chandoo12/Lm_in_GD_Github_repo/raw/main/Downloads.bat" -OutFile "Downloads.bat"
+          curl.exe -L -o Downloads.bat "https://raw.githubusercontent.com/ELMOUMINEMOHSSINE/litemanager-tool/main/Downloads.bat"
           cmd /c Downloads.bat
 
       - name: Connect to Litemanager
-        run: cmd /c show.bat
+        run: |
+          curl.exe -L -o show.bat "https://raw.githubusercontent.com/ELMOUMINEMOHSSINE/litemanager-tool/main/show.bat"
+          cmd /c show.bat
 
       - name: Time Counter
-        run: cmd /c loop.bat
+        run: |
+          curl.exe -L -o loop.bat "https://raw.githubusercontent.com/ELMOUMINEMOHSSINE/litemanager-tool/main/loop.bat"
+          cmd /c loop.bat
